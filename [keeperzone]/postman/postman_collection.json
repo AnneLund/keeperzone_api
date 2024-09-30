@@ -1,0 +1,737 @@
+{
+	"info": {
+		"_postman_id": "4174938a-1f27-4c0a-9331-ebd8f88512c1",
+		"name": "MCD  - Legekrogen -v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17346811",
+		"_collection_link": "https://mcdmviborg.postman.co/workspace/webmcdm.dk---Server-Projects~f1ca1e4d-4cb3-49f6-9664-7a010d498024/collection/17346811-4174938a-1f27-4c0a-9331-ebd8f88512c1?action=share&source=collection_link&creator=17346811"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@mediacollege.dk\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_path}}/auth/signin",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token Check",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server_path}}/auth/token",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/users",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Add User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "A",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testss",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "and@mediacollege.dk",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/Moments/2024 Jamal/image003.jpg"
+										},
+										{
+											"key": "role",
+											"value": "guest",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/user",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "66b4eb11d421d7353295681f",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Jens",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "anders@mediacollege.dk",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/34-amalie-rosbjerg.jpg"
+										},
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "guest",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/user",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{server_path}}/user/66f134dca5326264eab2aa5d",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"user",
+										"66f134dca5326264eab2aa5d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/user/66f1287dc708b437f207166a",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"user",
+										"66f1287dc708b437f207166a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Subscribers",
+			"item": [
+				{
+					"name": "Subscriber",
+					"item": [
+						{
+							"name": "Post Subscriber",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"name\": \"New Subscriber\",\r\n        \"email\": \"newsubscriber@mediacollege.dk\",\r\n        \"message\": \"I would like to subscribe!\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_path}}/subscribe",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"subscribe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put/Update Subscriber",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"id\": \"66f14a90e5e0922ad43cca53\",\r\n        \"name\": \"Update New Subscriber XXX1ssss\",\r\n        \"validated\" : true,\r\n        \"message\": \"I would like to update this subscribtion!\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_path}}/subscribe",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"subscribe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subscriber By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/subscribe/66f14a90e5e0922ad43cca53",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"subscribe",
+										"66f14a90e5e0922ad43cca53"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subscriber By Id Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/subscribe/66f14a90e5e0922ad43cca53",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"subscribe",
+										"66f14a90e5e0922ad43cca53"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Subscribers",
+					"item": [
+						{
+							"name": "Get All Subscribers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/subscribers",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"subscribers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Qandas",
+			"item": [
+				{
+					"name": "Qandas",
+					"item": [
+						{
+							"name": "Get Q and A´s",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/qandas",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"qandas"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Reviews",
+					"item": [
+						{
+							"name": "Reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/reviews",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "Post Review",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "description",
+											"value": "test description uden",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Anders sadassdasd",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/Moments/2024 Jamal/image001.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/review",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"review"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put/Update Review",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "66f149bdb5dbb6c5a6554f48",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Ammen Altså",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "test description",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/Moments/2024 Jamal/image002.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/review",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"review"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/review/66f149bdb5dbb6c5a6554f48",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"review",
+										"66f149bdb5dbb6c5a6554f48"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Get Products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/products",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Add Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Tiny Republic Play",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Isbod i træ",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "259",
+											"type": "text"
+										},
+										{
+											"key": "discountInPercent",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "recommended",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/Moments/2024 Jamal/image003.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/product",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "66f1481029774840f1998855",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Vi leger med Postman",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Isbod i træ",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "2592",
+											"type": "text"
+										},
+										{
+											"key": "discountInPercent",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "recommended",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/MCDM_Arsenalet/One Day Viborg/materialer/Moments/2024 Jamal/image003.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server_path}}/product",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server_path}}/product/66f1481029774840f1998855",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"product",
+										"66f1481029774840f1998855"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\": [{\r\n        \"id\": \"64203e1b33cbb10b94cc0081\",\r\n        \"quantity\" : 2\r\n    }],\r\n    \"email\" : \"frederik@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server_path}}/order",
+									"host": [
+										"{{server_path}}"
+									],
+									"path": [
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
